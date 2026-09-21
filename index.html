@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#02010a">
+<meta name="description" content="Una flor sobre un planeta verde, el universo entero de fondo y unas palabras para el 21 de septiembre.">
+<title>21 de septiembre</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="21 de septiembre">
+<meta property="og:description" content="Una flor sobre un planeta verde, el universo entero de fondo y unas palabras para el 21 de septiembre.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+  <!-- Cámara: empuja hacia la flor al iniciar y luego deriva lentamente -->
+  <div class="world"><div class="drift">
+
+    <canvas id="space" aria-hidden="true"></canvas>
+
+    <!-- Flor sobre planeta verde -->
+    <div class="flora" id="flora" aria-hidden="true"><div class="stack">
+
+      <!-- 1 · Planeta verde (estático) -->
+      <svg class="planeta" viewBox="0 0 600 800" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <radialGradient id="gSuelo" gradientUnits="userSpaceOnUse" cx="70" cy="650" r="1000">
+            <stop offset="0" stop-color="#9bf7b6"/><stop offset=".2" stop-color="#43d483"/>
+            <stop offset=".46" stop-color="#149064"/><stop offset=".74" stop-color="#0a4b45"/><stop offset="1" stop-color="#031c22"/>
+          </radialGradient>
+          <linearGradient id="gBorde" gradientUnits="userSpaceOnUse" x1="-140" y1="600" x2="740" y2="640">
+            <stop offset="0" stop-color="#f2fff8" stop-opacity=".95"/><stop offset=".5" stop-color="#9ff7d8" stop-opacity=".6"/><stop offset="1" stop-color="#4fbfc0" stop-opacity=".18"/>
+          </linearGradient>
+          <radialGradient id="gLuz">
+            <stop offset="0" stop-color="#ff86c2" stop-opacity=".6"/><stop offset=".5" stop-color="#ffb37a" stop-opacity=".18"/><stop offset="1" stop-color="#ffb37a" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="gMancha">
+            <stop offset="0" stop-color="#03301f" stop-opacity=".5"/><stop offset="1" stop-color="#03301f" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="gNube">
+            <stop offset="0" stop-color="#eafff6" stop-opacity=".22"/><stop offset="1" stop-color="#eafff6" stop-opacity="0"/>
+          </radialGradient>
+          <clipPath id="cSuelo"><circle cx="300" cy="1252" r="700"/></clipPath>
+        </defs>
+        <!-- halo atmosférico -->
+        <g fill="none" stroke="#7ff4d4">
+          <circle cx="300" cy="1252" r="700" stroke-width="70" stroke-opacity=".035"/>
+          <circle cx="300" cy="1252" r="700" stroke-width="44" stroke-opacity=".055"/>
+          <circle cx="300" cy="1252" r="700" stroke-width="24" stroke-opacity=".09"/>
+          <circle cx="300" cy="1252" r="700" stroke-width="11" stroke-opacity=".17"/>
+          <circle cx="300" cy="1252" r="700" stroke-width="4" stroke-opacity=".34"/>
+        </g>
+        <circle cx="300" cy="1252" r="700" fill="url(#gSuelo)"/>
+        <g clip-path="url(#cSuelo)">
+          <ellipse cx="110" cy="645" rx="250" ry="48" fill="url(#gMancha)"/>
+          <ellipse cx="530" cy="660" rx="320" ry="64" fill="url(#gMancha)"/>
+          <ellipse cx="340" cy="705" rx="220" ry="32" fill="url(#gMancha)"/>
+          <ellipse cx="20" cy="600" rx="160" ry="9" fill="url(#gNube)"/>
+          <ellipse cx="470" cy="588" rx="200" ry="8" fill="url(#gNube)"/>
+          <ellipse cx="312" cy="566" rx="240" ry="62" fill="url(#gLuz)"/>
+        </g>
+        <circle cx="300" cy="1252" r="699" fill="none" stroke="url(#gBorde)" stroke-width="2.2"/>
+        <g id="pasto-fondo"></g>
+      </svg>
+
+      <!-- 2 · Cuerpo de la flor (se mece como un todo) -->
+      <div class="cuerpo">
+
+        <svg class="tallo" viewBox="0 0 600 800" preserveAspectRatio="xMidYMax meet">
+          <defs>
+            <linearGradient id="gTallo" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#8bf5ab"/><stop offset=".5" stop-color="#1fb26a"/><stop offset="1" stop-color="#0a5d44"/>
+            </linearGradient>
+            <linearGradient id="gHoja" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#9bf7b6"/><stop offset=".55" stop-color="#22b96f"/><stop offset="1" stop-color="#0b6a4b"/>
+            </linearGradient>
+          </defs>
+          <g id="hojas"></g>
+          <path class="st" pathLength="1" d="M300 560C296 470 318 330 314 228" fill="none" stroke="url(#gTallo)" stroke-width="9" stroke-linecap="round"/>
+          <path class="st" pathLength="1" d="M297.8 558C293.8 470 315.6 330 311.6 232" fill="none" stroke="#e6fff0" stroke-opacity=".3" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+
+        <div class="halo"><i></i></div>
+
+        <svg class="cabeza" viewBox="0 0 600 800" preserveAspectRatio="xMidYMax meet">
+          <defs>
+            <linearGradient id="gP1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5a0f55"/><stop offset=".45" stop-color="#c02c85"/><stop offset=".85" stop-color="#ff77ad"/><stop offset="1" stop-color="#ffc0b8"/></linearGradient>
+            <linearGradient id="gP2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#7a1560"/><stop offset=".4" stop-color="#db3f92"/><stop offset=".85" stop-color="#ff8fb8"/><stop offset="1" stop-color="#ffd0bd"/></linearGradient>
+            <linearGradient id="gP3" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#a3236b"/><stop offset=".4" stop-color="#f05a9a"/><stop offset=".85" stop-color="#ffa6a0"/><stop offset="1" stop-color="#ffdcae"/></linearGradient>
+            <linearGradient id="gP4" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#d43f6a"/><stop offset=".4" stop-color="#ff7a86"/><stop offset=".85" stop-color="#ffb86e"/><stop offset="1" stop-color="#ffe3a0"/></linearGradient>
+            <linearGradient id="gP5" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff8a3d"/><stop offset=".5" stop-color="#ffb547"/><stop offset="1" stop-color="#fff0b0"/></linearGradient>
+            <radialGradient id="gCentro"><stop offset="0" stop-color="#fffbe0"/><stop offset=".5" stop-color="#ffd66b"/><stop offset="1" stop-color="#ff9a2e"/></radialGradient>
+          </defs>
+          <g id="petalos" transform="translate(314 222) rotate(-12) scale(1 .78)"></g>
+        </svg>
+
+        <div class="luces" id="luces"></div>
+      </div>
+
+      <!-- 3 · Pasto delantero (se mece aparte) -->
+      <svg class="pasto" viewBox="0 0 600 800" preserveAspectRatio="xMidYMax meet"><g id="pasto-frente"></g></svg>
+
+    </div></div>
+  </div></div>
+
+  <main class="verso" id="verso">
+    <p class="phrase" id="frase" aria-hidden="true"></p>
+    <p class="sr-only" id="frase-sr" aria-live="polite"></p>
+    <div class="foot"><span class="sig" id="firma">Para ti</span></div>
+  </main>
+
+  <p class="hint" id="hint">toca el cielo y pide un deseo</p>
+
+  <audio id="musica" src="assets/musica.mp3" loop preload="auto" playsinline></audio>
+  <button class="sonido off" id="sonido" type="button" aria-pressed="false" aria-label="Activar la música">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path class="cono" d="M4 9h3.6L12 5v14l-4.4-4H4z"/>
+      <g class="ondas" fill="none" stroke-linecap="round">
+        <path d="M15.6 9.4a3.6 3.6 0 0 1 0 5.2"/><path d="M18.1 7a7 7 0 0 1 0 10"/>
+      </g>
+      <path class="tacha" d="M16 9l5 6M21 9l-5 6" fill="none" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <div class="grade"></div>
+  <div class="vignette"></div>
+  <div class="grain" id="grain"></div>
+</div>
+
+<div class="bar top"></div>
+<div class="bar bot"></div>
+<div class="titulo"><span>21 de septiembre</span></div>
+
+<noscript><p style="position:fixed;inset:0;display:grid;place-items:center;margin:0;color:#f7f0ff;background:#02010a;font:italic 1.6rem Georgia,serif">21 de septiembre</p></noscript>
+
+<!-- Scripts clásicos (sin módulos) para que la página también abra con doble clic. El orden importa. -->
+<script src="js/util.js"></script>
+<script src="js/config.js"></script>
+<script src="js/respaldo.js"></script>
+<script src="js/flora.js"></script>
+<script src="js/espacio.js"></script>
+<script src="js/interaccion.js"></script>
+<script src="js/frases.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
